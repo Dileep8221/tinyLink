@@ -1,0 +1,11 @@
+<% layout('layout') -%>
+
+<section>
+  <h2>Stats for <%= link.code %></h2>
+  <p>Short URL: <a href="<%= baseUrl %>/<%= link.code %>"><%= baseUrl %>/<%= link.code %></a></p>
+  <p>Target URL: <a href="<%= link.target_url %>"><%= link.target_url %></a></p>
+  <p>Created at: <%= new Date(link.created_at).toLocaleString() %></p>
+  <p>Total clicks: <%= link.total_clicks %></p>
+  <p>Last clicked: <%= link.last_clicked ? new Date(link.last_clicked).toLocaleString() : '-' %></p>
+  <p><a href="/">Back to Dashboard</a></p>
+</section>

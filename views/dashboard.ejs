@@ -1,0 +1,55 @@
+<% layout('layout') %>
+
+<section>
+  <h2>Dashboard</h2>
+
+  <form id="add-form" method="post" action="/api/links">
+    <label>
+      Target URL
+      <input id="target_url" name="target_url" type="url" placeholder="https://example.com" required>
+    </label>
+    <label>
+      Custom Code (optional, 6-8 alnum)
+      <input id="code" name="code" pattern="[A-Za-z0-9]{6,8}" placeholder="ABC1234">
+    </label>
+    <button id="submitBtn" type="submit">Create</button>
+    <span id="formMsg" role="status"></span>
+  </form>
+
+  <div id="links-container">
+    <% if (links.length === 0) { %>
+      <p>No links yet. Create one above.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Target</th>
+            <th>Clicks</th>
+            <th>Last clicked</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% links.forEach(link => { %>
+            <tr id="row-<%=link.code%>">
+              <td><a href="/<%=link.code%>"><%= link.code %></a></td>
+              <td class="truncate" title="<%=link.target_url%>"><%= link.target_url %></td>
+              <td><%=link.total_clicks%></td>
+              <td><%= link.last_clicked ? new Date(link.last_clicked).toLocaleString() : '-' %></td>
+              <td>
+                <!-- removed inline onclick handlers; using data attributes and classes -->
+                <button class="btn-copy" data-code="<%=link.code%>">Copy</button>
+                <button class="btn-delete" data-code="<%=link.code%>">Delete</button>
+                <a class="btn-stats" href="/code/<%=link.code%>">Stats</a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</section>
+
+<!-- external script remains -->
+<script src="/public/js/dashboard.js" defer></script>
