@@ -12,7 +12,7 @@ A small URL shortening service (TinyLink) built with Node.js + Express and Postg
 ---
 
 ## GitHub repo
-> Add your public GitHub repo link here
+> https://github.com/Dileep8221/tinyLink
 
 ---
 
