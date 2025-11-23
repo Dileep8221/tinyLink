@@ -11,6 +11,12 @@ A small URL shortening service (TinyLink) built with Node.js + Express and Postg
 
 ---
 
+## Demo Video
+Watch the full TinyLink walkthrough here:  
+>https://drive.google.com/file/d/1rWoICJLMFkkGUo8hDJyFlRMIGZnxov3c/view?usp=drivesdk
+
+---
+
 ## GitHub repo
 > https://github.com/Dileep8221/tinyLink
 
